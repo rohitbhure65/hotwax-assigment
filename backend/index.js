@@ -5,11 +5,11 @@ const orderroutes = require('./routes/orders')
 const dbconnection = require('./lib/dbconnect')
 
 dbconnection()
+app.use(cors())
+app.use(express.json())
+app.use('/', orderroutes.route)
 
 const PORT = process.env.PORT || 8000
-app.use(cors())
-app.use('/', orderroutes.route)
-app.use(express.json())
 
 app.listen(PORT, () => {
     console.log(`server is running on port no ${PORT}`);

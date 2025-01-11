@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Customer = require('./customer')
 
 const contactMechSchema = new mongoose.Schema({
-    customer_id: { type: mongoose.Schema.Types.ObjectId, ref: Customer, required: true },
+    customer_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true },
     street_address: { type: String, required: true, maxlength: 100 },
     city: { type: String, required: true, maxlength: 50 },
     state: { type: String, required: true, maxlength: 50 },
