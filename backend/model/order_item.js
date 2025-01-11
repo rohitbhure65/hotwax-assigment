@@ -2,13 +2,11 @@ const mongoose = require('mongoose')
 const Order_Header = require('./order_header')
 const Product = require('./product')
 
-const Order_Item_Schema = new mongoose.Schema({
-    order_item_seq_id: { type: mongoose.Schema.Types.ObjectId },
-    order_id: { type: mongoose.Schema.Types.ObjectId, ref: Order_Header },
-    proudct_id: { type: mongoose.Schema.Types.ObjectId, ref: Product },
-    quantity: { type: Number, required: true },
-    status: { type: String, required: true }
-})
+const orderItemSchema = new mongoose.Schema({
+    orderId: { type: mongoose.Schema.Types.ObjectId, ref: OrderHeader, required: true },
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: Product, required: true },
+    quantity: { type: Number, required: true, min: 1 },
+    status: { type: String, required: true, maxlength: 20 }
+});
 
-const Order_Item = mongoose.model('Order_Item', Order_Item_Schema)
-module.exports = Order_Item
+module.exports = mongoose.model('order_item', orderItemSchema);

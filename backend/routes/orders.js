@@ -1,10 +1,10 @@
 const express = require('express')
 
 const router = express.Router()
-const ordercontroller = require('../Controller/order')
+const ordercontroller = require('../controller/order') 
 
 router
-    .post('/users', ordercontroller.)
+    .post('/orders', ordercontroller.createorder)
+    .get('/orders/:order_id', ordercontroller.getorderdetails)
 
-
-exports.routes = router
+module.exports = router
